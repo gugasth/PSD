@@ -25,8 +25,8 @@ if (kr2 - kp2) > 1
     kp2 = kr2 - 1;
 end
 
-A = zeros(1, N);
-A(kp1:kp2) = 1;
+A = ones(1, N);
+A(kr1:kr2) = 0;
 
 h = zeros(1, N);
 
@@ -44,7 +44,7 @@ h = h ./ N;
 % Plotar resposta em frequência
 figure;
 plot(w, 20*log10(abs(H)));
-axis([0 10 -300 50]);
+axis([0 10 -90 10]);
 ylabel('Resposta de Módulo (dB)');
 xlabel('Frequência (rad/s)');
 title('Resposta em Frequência');
