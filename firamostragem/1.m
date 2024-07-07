@@ -24,7 +24,7 @@ A = [ones(1, kp + 1) zeros(1, M/2 - kr + 1)];
 
 % Calcula os coeficientes do filtro FIR usando a janela
 k = 1:M/2;
-h = zeros(1, M+1);
+h = zeros(1, N);
 
 for n = 0:M
     h(n+1) = A(1) + 2 * sum((-1).^k .* A(k+1) .* cos(pi .* k .* (1 + 2*n) / N));

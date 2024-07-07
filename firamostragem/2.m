@@ -11,16 +11,22 @@ Omega_s = 10.0; % Frequência de amostragem
 kp = floor(N * Omega_p / Omega_s);
 kr = floor(N * Omega_r / Omega_s);
 
-A = [zeros(1, kr) ones(1, M/2 - kp + 1)];
+% Ajusta kp se a diferença entre kr e kp for maior do que 1
+if (kr - kp) > 1
+    kp = kr - 1;
+end
+
+A = [zeros(1, kr+1) ones(1, kp + 1)];
+
+h = zeros(1, N);
 
 % Calcular coeficientes do filtro FIR passa-altas
-k = 1:(M-1)/2;
+k = 1:M/2;
 
 for n = 0:M
     h(n+1) = A(1) * cos(pi * n) + 2 * sum((-1).^k .* A(k+1) .* cos(pi * k * (1 + 2*n) / N));
 end
 
-% Normalizar coeficientes
 h = h ./ N;
 
 % Calcular resposta em frequência
