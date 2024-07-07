@@ -16,7 +16,7 @@ if (kr - kp) > 1
     kp = kr - 1;
 end
 
-A = [zeros(1, kr+1) ones(1, kp + 1)];
+A = [zeros(1, kr+1) ones(1, M/2 - kp + 1)];
 
 h = zeros(1, N);
 
@@ -24,7 +24,7 @@ h = zeros(1, N);
 k = 1:M/2;
 
 for n = 0:M
-    h(n+1) = A(1) * cos(pi * n) + 2 * sum((-1).^k .* A(k+1) .* cos(pi * k * (1 + 2*n) / N));
+    h(n+1) = A(1) + 2 * sum((-1).^k .* A(k+1) .* cos(pi * k * (1 + 2*n) / N));
 end
 
 h = h ./ N;
@@ -39,4 +39,10 @@ axis([0 5 -50 10]);
 ylabel('Resposta de Módulo (dB)');
 xlabel('Frequência (rad/s)');
 title('Resposta em Frequência - Filtro Passa-Altas');
+
+% Plotando a resposta ao impulso
+figure(2)
+stem(h)
+ylabel('Resposta ao impulso')
+xlabel('Amostras (n)')
 

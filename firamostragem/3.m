@@ -15,21 +15,27 @@ kr1 = floor(N * Omega_r1 / Omega_s);
 kp2 = floor(N * Omega_p2 / Omega_s);
 kr2 = floor(N * Omega_r2 / Omega_s);
 
-% Construir as janelas
-A1 = [zeros(1, kr1) ones(1, M/2 - kp1 + 1)];
-A2 = [zeros(1, kr2) ones(1, M/2 - kp2 + 1)];
-
-
-% Calcular coeficientes do filtro FIR passa-faixa
-k = 1:(M-1)/2;
-h = zeros(1, M+1);
-
-for n = 0:M
-    h(n+1) = A1(1) * cos(pi * n) + 2 * sum((-1).^k .* A1(k+1) .* cos(pi * k .* (1 + 2*n) / N)) ...
-           + A2(1) * cos(pi * n) + 2 * sum((-1).^k .* A2(k+1) .* cos(pi * k .* (1 + 2*n) / N));
+% Ajusta kp se a diferença entre kr e kp for maior do que 1
+if (kr1 - kp1) > 1
+    kp1 = kr1 - 1;
 end
 
-% Normalizar coeficientes
+% Ajusta kp se a diferença entre kr e kp for maior do que 1
+if (kr2 - kp2) > 1
+    kp2 = kr2 - 1;
+end
+
+A = zeros(1, N);
+A(kp1:kp2) = 1;
+
+h = zeros(1, N);
+
+k = 1:M/2;
+
+for n = 0:M
+    h(n+1) = A(1) + 2 * sum((-1).^k .* A(k+1) .* cos(pi * k * (1 + 2*n) / N));
+end
+
 h = h ./ N;
 
 % Calcular resposta em frequência
@@ -38,8 +44,15 @@ h = h ./ N;
 % Plotar resposta em frequência
 figure;
 plot(w, 20*log10(abs(H)));
+axis([0 10 -300 50]);
 ylabel('Resposta de Módulo (dB)');
 xlabel('Frequência (rad/s)');
-title('Resposta em Frequência - Filtro Passa-Faixa');
-grid on;
+title('Resposta em Frequência');
+
+% Plotando a resposta ao impulso
+figure(2)
+stem(h)
+ylabel('Resposta ao impulso')
+xlabel('Amostras (n)')
+
 
