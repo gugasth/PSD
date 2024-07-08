@@ -44,3 +44,9 @@ ylabel('Resposta de Módulo (dB)');
 xlabel('Frequência (rad/s)');
 title('Resposta em Frequência');
 
+% Plotando a resposta ao impulso
+figure(2)
+stem(h)
+ylabel('Resposta ao impulso')
+xlabel('Amostras (n)')
+

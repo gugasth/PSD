@@ -26,7 +26,7 @@ if (kr2 - kp2) > 1
 end
 
 A = ones(1, N);
-A(kr1:kr2) = 0;
+A(kr1+1:kp2) = 0;
 
 h = zeros(1, N);
 
