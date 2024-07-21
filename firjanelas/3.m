@@ -42,7 +42,7 @@ Fs=2000;
 Ts=1/Fs;
 
 L=(tmax-tmin)/Ts;
-t=0:Ts:tmax-Ts;
+t=tmin:Ts:tmax-Ts;
 s = 5*sin(2*pi*50*t) + 2*sin(2*pi*350*t) + sin(2*pi*900*t);
 S = fft(s);
 S = abs(2*S/L);
