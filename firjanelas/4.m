@@ -2,7 +2,7 @@ clear all; close all; clc;
 M = 301;
 
 
-% Primeiro Filtro 
+% Primeiro Filtro
 Omega_c1 = 697;
 Omega_c2 = 852;
 
@@ -76,6 +76,8 @@ figure(1)
 subplot(3,2,1),plot(t,s);
 title('Sinal original')
 xlabel('t')
+xlim([0 0.2])
+ylim([-5 5])
 ylabel('s(t)')
 subplot(3,2,2),plot(freq,S)
 title('Espectro de Amplitude do sinal original')

@@ -25,9 +25,6 @@ ylabel('h[n]');
 xlabel('n)');
 title('Resposta ao Impulso');
 
-
-
-
 [H,w]=freqz(h,1,2048,Omega_s);
 figure(2)
 plot(w,20*log10(abs(H)))

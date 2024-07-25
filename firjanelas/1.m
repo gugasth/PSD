@@ -18,7 +18,7 @@ for i = 1:length(M_values)
 
     % Filtro ideal
     h0 = 1 - (wc2 - wc1) / pi;
-    haux = (sin(wc1.*n) - sin(wc2.*n)) ./ (pi.*n);
+    haux = (sin(wc2.*n) - sin(wc1.*n)) ./ (pi.*n);
     h_ideal = [fliplr(haux) h0 haux];
 
     % Criar figura para o valor atual de M

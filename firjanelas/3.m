@@ -18,7 +18,8 @@ h_ret = h_n;
 h_hamm = w_hamm.*h_n;
 h_hann = w_hann.*h_n;
 h_black = w_black.*h_n;
-figure
+
+figure(3)
 freqz(h_ret,1);
 title('Filtro FIR passa-faixa - Janela Retangular')
 
