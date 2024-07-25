@@ -1,4 +1,4 @@
-clear all
+clear all; close all; clc;
 M = 71;
 
 limiar_seguranca = 20;

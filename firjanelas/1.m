@@ -1,3 +1,5 @@
+clear all; close all; clc;
+
 % Parâmetros do filtro
 Omega_c1 = 10; % Frequência de corte inferior em rad/s
 Omega_c2 = 35; % Frequência de corte superior em rad/s
