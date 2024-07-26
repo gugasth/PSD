@@ -1,0 +1,11 @@
+
+SE FOR passa-faixa ou rejeita-faixa
+   se for geometricamente simetrico ok
+   senao passo pelo algoritmo pra corrigir(passos i,ii,iii,iv do slide)
+  
+aí faz a normalização (ve qual o filtro e olha a tabela)
+
+pra achar e bota na fórmula
+pra achar n que é a ordem bota na fórmula
+
+
