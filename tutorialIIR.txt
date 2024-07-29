@@ -1,3 +1,5 @@
+especificação vem em freq analogica
+preciso transformar em digital 
 
 SE FOR passa-faixa ou rejeita-faixa
    se for geometricamente simetrico ok
@@ -5,7 +7,12 @@ SE FOR passa-faixa ou rejeita-faixa
   
 aí faz a normalização (ve qual o filtro e olha a tabela)
 
-pra achar e bota na fórmula
-pra achar n que é a ordem bota na fórmula
+acha o `a`
+pra achar `e` bota na fórmula
+pra achar `n` que é a ordem bota na fórmula
 
+polos
 
+função de transferencia
+
+transformação(bilinear)
